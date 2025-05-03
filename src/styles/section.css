@@ -1,29 +1,20 @@
-.reward-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.reward-table th,
-.reward-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
+.hero-section {
+  padding: 100px 20px;
+  background-color: #fff4d6;
   text-align: center;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #fff;
-  border-top: 1px solid #ddd;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
+.hero-section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.bottom-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
