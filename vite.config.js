@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/meme/', // GitHub Pages 서브경로 설정
+  base: '/meme/', // 👈 반드시 포함해야 함
 });
