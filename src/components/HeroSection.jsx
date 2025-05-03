@@ -1,18 +1,15 @@
-// src/components/HeroSection.jsx
 import React from 'react';
-import '../styles/section.css';
-import logo from '../assets/ousia-logo.png'; // 첨부한 고양이 코인 이미지
+import './section.css'; // 필요 시 스타일 파일도 함께 작성됨
 
-const HeroSection = () => {
+function HeroSection() {
   return (
     <section className="hero-section hidden">
-      <div className="hero-content">
-        <img src={logo} alt="OUSIA Logo" className="hero-logo" />
-        <h1 className="hero-title">Prove Real Ownership Through Memes</h1>
-        <p className="hero-subtitle">A utility meme coin for a trust-based digital asset ecosystem</p>
+      <div className="container">
+        <h1>OUSIA Project</h1>
+        <p>A Utility Meme Coin for a Trust-Based Digital Asset Ecosystem in the Web3 Era</p>
       </div>
     </section>
   );
-};
+}
 
 export default HeroSection;
