@@ -1,7 +1,20 @@
-import React from 'react';
-import '../../styles/section.css'; // 파일이 /src/styles/ 폴더에 있는 경우
+import React, { useEffect } from 'react';
+import './section.css'; // 같은 폴더에 section.css 위치할 것
 
 function HeroSection() {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+  }, []);
+
   return (
     <section className="hero-section hidden">
       <div className="container">
