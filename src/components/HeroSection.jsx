@@ -1,5 +1,5 @@
 import React from 'react';
-import './section.css'; // 필요 시 스타일 파일도 함께 작성됨
+import '../../styles/section.css'; // 파일이 /src/styles/ 폴더에 있는 경우
 
 function HeroSection() {
   return (
