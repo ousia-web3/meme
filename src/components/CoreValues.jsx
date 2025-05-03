@@ -19,4 +19,3 @@ const CoreValues = () => {
 };
 
 export default CoreValues;
->>>>>>> 5df2b47 (Initial commit for OUSIA landing)
