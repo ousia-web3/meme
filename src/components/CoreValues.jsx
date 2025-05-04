@@ -1,10 +1,9 @@
-// src/components/CoreValues.jsx
 import React from 'react';
 import '../styles/section.css';
 
 const CoreValues = () => {
   return (
-    <section className="section-container hidden">
+    <section className="section-container hidden" id="core-values">
       <h2 className="section-title">Core Values & Vision</h2>
       <div className="section-description">
         <ul>
