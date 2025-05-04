@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './section.css'; // 같은 폴더에 section.css 위치할 것
+import '../styles/section.css';
 
 function HeroSection() {
   useEffect(() => {
