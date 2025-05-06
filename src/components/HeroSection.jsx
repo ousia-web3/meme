@@ -7,12 +7,6 @@ const HeroSection = () => {
       <p className="text-lg sm:text-xl mb-8">
         Prove real ownership through memes. Built for the Web3 era.
       </p>
-      <a
-        href="#overview"
-        className="inline-block bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition"
-      >
-        Get Started
-      </a>
     </section>
   );
 };
