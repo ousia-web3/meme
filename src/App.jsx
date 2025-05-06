@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+// 고정 헤더 및 섹션 컴포넌트
+import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import ProjectOverview from "./components/ProjectOverview";
 import MissionUniverse from "./components/MissionUniverse";
@@ -9,7 +11,7 @@ import RewardsTable from "./components/RewardsTable";
 import TokenInfo from "./components/TokenInfo";
 import Footer from "./components/Footer";
 
-// ✅ 동적 배경
+// 전체 배경에 적용될 동적 그라데이션 & 블러 효과
 const DynamicBackground = () => {
   const [index, setIndex] = useState(0);
   const gradients = [
@@ -21,7 +23,7 @@ const DynamicBackground = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % gradients.length);
-    }, 8000);
+    }, 8000); // 8초마다 전환
     return () => clearInterval(interval);
   }, []);
 
@@ -32,23 +34,7 @@ const DynamicBackground = () => {
   );
 };
 
-// ✅ 상단 고정 네비게이션 바
-const FixedHeader = () => (
-  <header className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-md shadow-md">
-    <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center text-white">
-      <div className="text-xl font-bold">OUSIA</div>
-      <nav className="space-x-6 text-sm">
-        <a href="#overview" className="hover:underline">Overview</a>
-        <a href="#mission" className="hover:underline">Mission</a>
-        <a href="#values" className="hover:underline">Values</a>
-        <a href="#solution" className="hover:underline">Solution</a>
-        <a href="#rewards" className="hover:underline">Rewards</a>
-        <a href="#token" className="hover:underline">Token</a>
-      </nav>
-    </div>
-  </header>
-);
-
+// 스크롤 인터섹션 애니메이션 Hook
 function useInViewObserver(ref) {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -67,9 +53,11 @@ function useInViewObserver(ref) {
   return isVisible;
 }
 
+// 각 섹션 애니메이션 래퍼
 function AnimatedSection({ children, effect = "fadeUp" }) {
   const ref = useRef();
   const isVisible = useInViewObserver(ref);
+
   const variants = {
     fadeUp: { opacity: 1, y: 0 },
     scaleIn: { opacity: 1, scale: 1 },
@@ -97,11 +85,14 @@ function AnimatedSection({ children, effect = "fadeUp" }) {
   );
 }
 
+// App 구성
 function App() {
   return (
     <div className="font-sans relative">
       <DynamicBackground />
-      <FixedHeader />
+      <Header />
+
+      {/* 헤더 높이만큼 여백 확보 */}
       <div className="pt-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
