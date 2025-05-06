@@ -9,7 +9,7 @@ import RewardsTable from "./components/RewardsTable";
 import TokenInfo from "./components/TokenInfo";
 import Footer from "./components/Footer";
 
-// ✅ 전체 배경에 적용될 동적 그라데이션 & 블러 효과
+// ✅ 동적 배경
 const DynamicBackground = () => {
   const [index, setIndex] = useState(0);
   const gradients = [
@@ -21,8 +21,7 @@ const DynamicBackground = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % gradients.length);
-    }, 8000); // 8초마다 전환
-
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 
@@ -33,9 +32,25 @@ const DynamicBackground = () => {
   );
 };
 
+// ✅ 상단 고정 네비게이션 바
+const FixedHeader = () => (
+  <header className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-md shadow-md">
+    <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center text-white">
+      <div className="text-xl font-bold">OUSIA</div>
+      <nav className="space-x-6 text-sm">
+        <a href="#overview" className="hover:underline">Overview</a>
+        <a href="#mission" className="hover:underline">Mission</a>
+        <a href="#values" className="hover:underline">Values</a>
+        <a href="#solution" className="hover:underline">Solution</a>
+        <a href="#rewards" className="hover:underline">Rewards</a>
+        <a href="#token" className="hover:underline">Token</a>
+      </nav>
+    </div>
+  </header>
+);
+
 function useInViewObserver(ref) {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -49,26 +64,23 @@ function useInViewObserver(ref) {
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, [ref]);
-
   return isVisible;
 }
 
 function AnimatedSection({ children, effect = "fadeUp" }) {
   const ref = useRef();
   const isVisible = useInViewObserver(ref);
-
   const variants = {
     fadeUp: { opacity: 1, y: 0 },
     scaleIn: { opacity: 1, scale: 1 },
     flipY: { opacity: 1, rotateY: 0 },
-    glow: { opacity: 1, boxShadow: "0 0 20px rgba(255,255,255,0.4)" },
+    glow: { opacity: 1, boxShadow: "0 0 20px rgba(255,255,255,0.4)" }
   };
-
   const initial = {
     fadeUp: { opacity: 0, y: 50 },
     scaleIn: { opacity: 0, scale: 0.95 },
     flipY: { opacity: 0, rotateY: 90 },
-    glow: { opacity: 0 },
+    glow: { opacity: 0 }
   };
 
   return (
@@ -88,39 +100,41 @@ function AnimatedSection({ children, effect = "fadeUp" }) {
 function App() {
   return (
     <div className="font-sans relative">
-      <DynamicBackground /> {/* ✅ 동적 배경 삽입 */}
+      <DynamicBackground />
+      <FixedHeader />
+      <div className="pt-16">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <HeroSection />
+          </div>
+        </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <HeroSection />
-        </div>
-      </motion.div>
-
-      <AnimatedSection effect="fadeUp">
-        <ProjectOverview />
-      </AnimatedSection>
-      <AnimatedSection effect="fadeUp">
-        <MissionUniverse />
-      </AnimatedSection>
-      <AnimatedSection effect="scaleIn">
-        <CoreValues />
-      </AnimatedSection>
-      <AnimatedSection effect="fadeUp">
-        <ProblemSolution />
-      </AnimatedSection>
-      <AnimatedSection effect="flipY">
-        <RewardsTable />
-      </AnimatedSection>
-      <AnimatedSection effect="scaleIn">
-        <TokenInfo />
-      </AnimatedSection>
-      <AnimatedSection effect="glow">
-        <Footer />
-      </AnimatedSection>
+        <AnimatedSection effect="fadeUp">
+          <section id="overview"><ProjectOverview /></section>
+        </AnimatedSection>
+        <AnimatedSection effect="fadeUp">
+          <section id="mission"><MissionUniverse /></section>
+        </AnimatedSection>
+        <AnimatedSection effect="scaleIn">
+          <section id="values"><CoreValues /></section>
+        </AnimatedSection>
+        <AnimatedSection effect="fadeUp">
+          <section id="solution"><ProblemSolution /></section>
+        </AnimatedSection>
+        <AnimatedSection effect="flipY">
+          <section id="rewards"><RewardsTable /></section>
+        </AnimatedSection>
+        <AnimatedSection effect="scaleIn">
+          <section id="token"><TokenInfo /></section>
+        </AnimatedSection>
+        <AnimatedSection effect="glow">
+          <Footer />
+        </AnimatedSection>
+      </div>
     </div>
   );
 }
