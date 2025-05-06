@@ -2,12 +2,10 @@ import React from "react";
 
 const ProjectOverview = () => {
   return (
-    <section className="py-16 text-center">
-      <h2 className="text-3xl font-bold mb-4 text-white">Project Overview</h2>
-      <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-        The meme coin project aims to merge real-life ownership with digital
-        value using blockchain, enabling transparent contracts, NFT-based
-        proof-of-reality, and utility-driven token ecosystems.
+    <section id="overview" className="py-16 text-center text-white">
+      <h2 className="text-3xl font-bold mb-4">Project Overview</h2>
+      <p className="text-lg max-w-2xl mx-auto">
+        This Web3 project aims to build a transparent and trustworthy digital contract ecosystem by linking real-world real estate transactions with blockchain technology. It records the reliability of transactions using NFTs and provides tangible rewards in return.
       </p>
     </section>
   );

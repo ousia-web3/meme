@@ -2,8 +2,8 @@ import React from "react";
 
 const ProblemSolution = () => {
   return (
-    <section className="py-16 text-center">
-      <h2 className="text-3xl font-bold mb-4 text-white">Problems & Solutions</h2>
+    <section id="solution" className="py-16 text-center text-white">
+      <h2 className="text-3xl font-bold mb-4">Problems & Solutions</h2>
       <div className="max-w-2xl mx-auto text-left text-gray-200 space-y-4">
         <div>
           <h3 className="font-semibold">🌟 Problems</h3>

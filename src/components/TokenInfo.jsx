@@ -2,9 +2,9 @@ import React from "react";
 
 const TokenInfo = () => {
   return (
-    <section className="py-16 text-center">
-      <h2 className="text-3xl font-bold mb-4 text-white">Token Information</h2>
-      <div className="text-gray-200 max-w-2xl mx-auto text-left space-y-2">
+    <section id="token" className="py-16 text-center text-white">
+      <h2 className="text-3xl font-bold mb-4">Token Information</h2>
+      <div className="max-w-2xl mx-auto text-left text-gray-200 space-y-2">
         <p>🌟 Token Name: <strong>OUSIA</strong></p>
         <p>🌟 Ticker: <strong>OSIA</strong></p>
         <p>🌟 Blockchain: <strong>Solana</strong></p>
