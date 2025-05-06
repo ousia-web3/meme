@@ -9,11 +9,14 @@ const CoreValues = () => {
   ];
 
   return (
-    <section className="py-16 text-center bg-gray-100">
-      <h2 className="text-3xl font-bold mb-4">Core Values & Vision</h2>
-      <ul className="space-y-3 text-lg text-gray-700 max-w-2xl mx-auto">
+    <section className="py-16 text-center">
+      <h2 className="text-3xl font-bold mb-8 text-white">Core Values & Vision</h2>
+      <ul className="space-y-4 text-lg text-gray-200 max-w-2xl mx-auto">
         {values.map((v, i) => (
-          <li key={i}>🌟 {v}</li>
+          <li key={i} className="flex items-start gap-2">
+            <span className="text-yellow-300 text-xl">🌟</span>
+            <span>{v}</span>
+          </li>
         ))}
       </ul>
     </section>
