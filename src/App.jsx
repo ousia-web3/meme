@@ -9,6 +9,30 @@ import RewardsTable from "./components/RewardsTable";
 import TokenInfo from "./components/TokenInfo";
 import Footer from "./components/Footer";
 
+// ✅ 전체 배경에 적용될 동적 그라데이션 & 블러 효과
+const DynamicBackground = () => {
+  const [index, setIndex] = useState(0);
+  const gradients = [
+    "from-indigo-700 via-purple-600 to-pink-500",
+    "from-purple-700 via-pink-500 to-yellow-500",
+    "from-teal-700 via-cyan-500 to-blue-500"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % gradients.length);
+    }, 8000); // 8초마다 전환
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div
+      className={`fixed top-0 left-0 w-full h-full -z-10 blur-md transition-all duration-1000 bg-gradient-to-br ${gradients[index]}`}
+    />
+  );
+};
+
 function useInViewObserver(ref) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -63,7 +87,9 @@ function AnimatedSection({ children, effect = "fadeUp" }) {
 
 function App() {
   return (
-    <div className="font-sans">
+    <div className="font-sans relative">
+      <DynamicBackground /> {/* ✅ 동적 배경 삽입 */}
+
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -73,6 +99,7 @@ function App() {
           <HeroSection />
         </div>
       </motion.div>
+
       <AnimatedSection effect="fadeUp">
         <ProjectOverview />
       </AnimatedSection>
