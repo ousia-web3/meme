@@ -11,12 +11,6 @@ const HeroSection = () => {
           Meme-powered proof of ownership for the Web3 era.  
           Real-world verification meets decentralized identity.
         </p>
-        <a
-          href="#overview"
-          className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 text-white backdrop-blur-md rounded-full border border-white/20 hover:bg-white/20 transition-all shadow-lg"
-        >
-          Explore the Project
-        </a>
       </div>
     </section>
   );
