@@ -7,9 +7,7 @@ const Header = () => {
     { label: "Overview", href: "#overview" },
     { label: "Mission", href: "#mission" },
     { label: "Values", href: "#values" },
-    { label: "Solution", href: "#solution" },
-    { label: "Rewards", href: "#rewards" },
-    { label: "Token", href: "#token" },
+    { label: "Solution", href: "#solution" }
   ];
 
   return (
@@ -38,7 +36,7 @@ const Header = () => {
 
       {/* 모바일 메뉴 */}
       {menuOpen && (
-        <div className="md:hidden bg-black/80 text-white px-4 pb-4 space-y-2">
+        <div className="md:hidden bg-gradient-to-br from-purple-800/90 via-pink-700/80 to-black/80 backdrop-blur-lg text-white px-4 pb-4 space-y-2 shadow-2xl">
           {navItems.map((item) => (
             <a
               key={item.href}

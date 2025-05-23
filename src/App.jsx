@@ -10,6 +10,7 @@ import ProblemSolution from "./components/ProblemSolution";
 import RewardsTable from "./components/RewardsTable";
 import TokenInfo from "./components/TokenInfo";
 import Footer from "./components/Footer";
+import DisabledSection from "./components/DisabledSection";
 
 // 전체 배경에 적용될 동적 그라데이션 & 블러 효과
 const DynamicBackground = () => {
@@ -116,12 +117,17 @@ function App() {
         <AnimatedSection effect="fadeUp">
           <section id="solution"><ProblemSolution /></section>
         </AnimatedSection>
+        {/* 미제공 섹션 숨김 처리
         <AnimatedSection effect="flipY">
           <section id="rewards"><RewardsTable /></section>
+        </AnimatedSection>
+        <AnimatedSection effect="glow">
+          <DisabledSection />
         </AnimatedSection>
         <AnimatedSection effect="scaleIn">
           <section id="token"><TokenInfo /></section>
         </AnimatedSection>
+        */}
         <AnimatedSection effect="glow">
           <Footer />
         </AnimatedSection>
